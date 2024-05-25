@@ -1,0 +1,57 @@
+body a {
+  border: #5e5d5d 1px solid;
+  transition: all 0.3s ease;
+}
+
+body a:hover {
+  background-color: #5e5d5d;
+  box-shadow: 1px 1px 3px 0 #00000069;
+}
+
+button {
+  border: #5e5d5d 1px solid;
+  border-radius: 3px;
+  transition: all 0.3s ease;
+  font-size: 15px;
+  padding: 5px;
+  margin-top: 8px;
+  width: 100%;
+  letter-spacing: 0.8px;
+}
+
+button:hover {
+  background-color: #5e5d5d;
+  box-shadow: 1px 1px 3px 0 #00000069;
+  color: #FFFFFF;
+}
+
+.form {
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  margin: 0 auto;
+  width: 250px;
+  margin-top: 25px;
+}
+
+.form label {
+
+  flex-direction: column;
+  gap: 5px;
+  width: 100%;
+}
+
+.delay {
+  width: 100%;
+  font-size: 18px;
+  padding: 5px;
+  margin-bottom: 10px;
+}
+
+input[type="radio"]:hover, fieldset label {
+  cursor: pointer;
+}
+
+::before {
+  color:#ff00009b
+}
