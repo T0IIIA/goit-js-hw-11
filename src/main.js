@@ -1,17 +1,13 @@
-import { getImages } from './js/pixabay-api.js';
-import {  } from './js/render-functions.js';
-
-import iziToast from "izitoast";
-import "izitoast/dist/css/iziToast.min.css";
 import SimpleLightbox from "simplelightbox";
 import "simplelightbox/dist/simple-lightbox.min.css";
 
+//----------------------------------
+import { getImages } from './js/pixabay-api.js';
 const searchForm = document.querySelector('.search-form');
-const imageGallery = document.querySelector('.gallery');
 
+//----------------------------------
 
-
-let imageName = "";
+let imageName = '';
 
 searchForm.addEventListener('input', (event) => {
   imageName = event.target.value.trim();
@@ -24,15 +20,16 @@ function onSubmit(event) {
     return;
   }
 
-  return getImages(imageName)
+
+  getImages(imageName)
+
+  return event.target.reset();
 }
 
 
+//-----------------simpleBox-----------------
 
-
-
-
-
-// У файлі main.js напиши всю логіку роботи додатка.
-// У файлі pixabay-api.js зберігай функції для HTTP-запитів.
-// У файлі render-functions.js створи функції для відображення елементів інтерфейсу.
+let galleryModal = new SimpleLightbox('.gallery gallery-link', {
+  captionsData: 'alt',
+  captionDelay: 250,
+});
