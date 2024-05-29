@@ -1,10 +1,11 @@
+import SimpleLightbox from "simplelightbox";
+import "simplelightbox/dist/simple-lightbox.min.css";
 import iziToast from "izitoast";
 import "izitoast/dist/css/iziToast.min.css"
-import { createMarkup } from './render-functions.js';
+import { imageTamplate } from './render-functions.js';
 export { getImages }
 
 const imageGallery = document.querySelector('.gallery');
-
 //----------------------------------
 
 function getImages(imageName) {
@@ -28,11 +29,13 @@ function getImages(imageName) {
     })
     .then(data => {
       if (data.hits.length === 0) {
+      imageGallery.innerHTML = '';
       return iziToast.error({ ...errorParams });
       }
 
-      const markup = createMarkup(data.hits);
+      const markup = imageTamplate(data.hits);
       imageGallery.innerHTML = markup;
+      lightbox.refresh();
     })
     .catch(error => console.log(error))
 }
@@ -47,12 +50,9 @@ const errorParams = {
   message: 'Sorry, there are no images matching your search query. Please try again!',
 }
 
+//------------------Simple Light box----------------
 
-
-
-
-
-
+let lightbox = new SimpleLightbox(".gallery a", { captionDelay: 250, captionsData: "alt" });
 
 
 

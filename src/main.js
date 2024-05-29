@@ -4,6 +4,7 @@ import "simplelightbox/dist/simple-lightbox.min.css";
 //----------------------------------
 import { getImages } from './js/pixabay-api.js';
 const searchForm = document.querySelector('.search-form');
+const loader = document.querySelector('.loader');
 
 //----------------------------------
 
@@ -16,20 +17,25 @@ searchForm.addEventListener('input', (event) => {
 searchForm.addEventListener('submit', onSubmit);
 function onSubmit(event) {
   event.preventDefault();
+  showLoader();
+
   if (imageName === '') {
     return;
   }
 
-
   getImages(imageName)
-
+    .finally(() => {
+      hideLoader();
+    });
   return event.target.reset();
 }
 
+//---------------------Loader-----------------------
 
-//-----------------simpleBox-----------------
+function showLoader() {
+  loader.style.display = 'inline-block';
+}
 
-let galleryModal = new SimpleLightbox('.gallery gallery-link', {
-  captionsData: 'alt',
-  captionDelay: 250,
-});
+function hideLoader() {
+  loader.style.display = 'none';
+}
