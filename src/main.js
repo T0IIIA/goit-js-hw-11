@@ -3,7 +3,6 @@ import "izitoast/dist/css/iziToast.min.css"
 import SimpleLightbox from "simplelightbox";
 import "simplelightbox/dist/simple-lightbox.min.css";
 
-//----------------------------------
 import { getImages } from './js/pixabay-api.js';
 import { imageTamplate } from './js/render-functions.js';
 
